@@ -20,16 +20,8 @@
     import times from '../util/times';
     import MovieItem from './MovieItem.vue';
 
-
     export default {
-
-
-        props: [
-          'genre',
-          'time',
-          'movies',
-          'day'
-        ],
+        props: ['genre','time','movies','day'],
         methods: {
           moviePassesGenreFilter: function(movie) {
             if (!this.genre.length) {
@@ -45,7 +37,7 @@
               return matched;
             }
           },
-          sessionPassesTimeFilter: function() {
+          sessionPassesTimeFilter: function(session) {
             if (!this.day.isSame(this.$moment(session.time), 'day')) {
               return false;
             } else if (this.time.length === 0 || this.time.length === 2){
@@ -60,8 +52,9 @@
         computed: {
             filteredMovies() {
                 return this.movies
-                        .filter(this.moviePassesGenreFilter).filter(movie => movie.sessions.find(this.sessionPassesTimeFilter));;
-
+                        .filter(this.moviePassesGenreFilter)
+                        .filter(movie => movie.sessions.find(this.sessionPassesTimeFilter));
+                ;
             }
         },
         components: {

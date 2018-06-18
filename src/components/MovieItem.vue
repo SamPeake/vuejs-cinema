@@ -7,7 +7,6 @@
       <div class="movie-title">
             <h2>{{ movie.Title }}</h2>
             <span class="movie-rating">{{ movie.Rated }}</span>
-
       </div>
       <div class="movie-sessions">
           <div v-for="session in filteredSessions(sessions)" class="session-time-wrapper">
@@ -17,7 +16,6 @@
     </div>
   </div>
 </template>
-
 <script>
     export default {
         props: ['movie', 'sessions', 'day'],
