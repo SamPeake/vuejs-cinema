@@ -25,7 +25,9 @@ new Vue({
     'movie-list': {
       template: `
         <div id="movie-list">
-          <div v-for="movie in filteredMovies" class="movie">{{ movie.title }}</div>
+          <div v-for="movie in filteredMovies" class="movie">
+          {{   movie.title }}
+          </div>
         </div>
       `,
       data: function() {
