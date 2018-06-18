@@ -32,14 +32,23 @@ new Vue({
         <div id="movie-filter">
           <h2>Filter results</h2>
           <div class="filter-group">
-            <check-filter v-for="genre in genres"></check-filter>
+            <check-filter v-for="genre in genres" :title="genre"></check-filter>
           </div>
         </div>
       `,
       components: {
         'check-filter': {
+          data(){
+            return {
+              checked: false
+            }
+          },
+          props: [ 'title' ],
           template: `
-          <div>Filter</div>
+          <div :class="{ 'check-filter': true, active: checked }" v-on:click="checked = !checked">
+            <span class='checkbox'></span>
+            <span class='check-filter-title'>{{ title }}</span>
+          </div>
           `
         }
       }
