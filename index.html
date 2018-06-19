@@ -21,7 +21,7 @@
         <img src="/public/logo.png">
         <h1>Vue.js Cinema</h1>
       </div>
-      <overview :genre="genre" :time="time" :movies="movies" :day="day"></overview>
+      <router-view :genre="genre" :time="time" :movies="movies" :day="day"></router-view>
     </div>
     <script src="/dist/build.js"></script>
   </body>
