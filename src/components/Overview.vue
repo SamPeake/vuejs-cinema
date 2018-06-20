@@ -11,6 +11,7 @@
     import MovieList from './MovieList.vue';
     import MovieFilter from './MovieFilter.vue';
     import DaySelect from './DaySelect.vue';
+
     export default {
         props: [ 'genre', 'time', 'movies', 'day' ],
         components: {

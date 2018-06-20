@@ -1,7 +1,9 @@
 <template>
     <div id="day-select">
         <ul class="days">
-            <li :class="{ day: true, active: isActive(day)}" v-for="day in days" v-on:click="selectDay(day)">{{ formatDay(day) }}</li>
+            <li v-bind:class="{ day: true, active: isActive(day)}" v-for="day in days" v-on:click="selectDay(day)">
+              {{ formatDay(day) }}
+            </li>
         </ul>
     </div>
 </template>
@@ -17,8 +19,9 @@
           formatDay(raw) {
               if (raw.isSame(this.$moment(), 'day')) {
                 return 'Today';
+              } else {
+                return raw.format('ddd DD/MM');
               }
-              return raw.format('ddd DD/MM');
           },
           isActive(day) {
             return day.isSame(this.selected, 'day');

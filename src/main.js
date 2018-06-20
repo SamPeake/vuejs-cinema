@@ -1,14 +1,12 @@
 import Vue from 'vue';
 import './style.scss';
 
-import Overview from './components/Overview.vue';
-
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
 
 import moment from 'moment-timezone';
 moment.tz.setDefault("UTC");
-Object.defineProperty(Vue.prototype, '$moment', { get() { return this.$root.moment } });
+Object.defineProperty(Vue.prototype, '$moment', { get: function() { return this.$root.moment; } });
 
 import { checkFilter, setDay } from './util/bus';
 const bus = new Vue();
@@ -19,6 +17,7 @@ Vue.use(VueRouter);
 
 import routes from './util/routes';
 const router = new VueRouter({ routes });
+
 new Vue({
   el: '#app',
   data: {
@@ -28,9 +27,6 @@ new Vue({
     moment,
     day: moment(),
     bus
-  },
-  components: {
-    Overview
   },
   created() {
     this.$http.get('/api').then(response => {
