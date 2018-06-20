@@ -12,7 +12,7 @@ Object.defineProperty(Vue.prototype, '$moment', { get() { return this.$root.mome
 
 import { checkFilter, setDay } from './util/bus';
 const bus = new Vue();
-Object.defineProperty(Vue.prototype, '$bus', { get() { return this.$root.bus } });
+Object.defineProperty(Vue.prototype, '$bus', { get: function() { return this.$root.bus; } });
 
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
